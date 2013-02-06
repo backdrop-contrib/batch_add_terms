@@ -17,3 +17,31 @@ function batch_add_terms_menu() {
 
   return $items;
 }
+
+/**
+ * Implements hook_theme().
+ */
+function batch_add_terms_theme() {
+  return array(
+    'taxonomy_overview_vocabularies' => array(
+      'render element' => 'form',
+      'function' => 'batch_add_terms_taxonomy_overview_vocabularies',
+      'file' => 'batch_add_terms.admin.inc',
+    ),
+  );
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function batch_add_terms_form_taxonomy_overview_vocabularies_alter(&$form) {
+  foreach (element_children($form) as $element_name) {
+    if (isset($form[$element_name]['#vocabulary'])) {
+      $form[$element_name]['batch_add'] = array(
+        '#type' => 'link',
+        '#title' => t('batch add terms'),
+        '#href' => 'admin/structure/taxonomy/' . $form[$element_name]['#vocabulary']->machine_name . '/mass-add',
+      );
+    }
+  }
+}
