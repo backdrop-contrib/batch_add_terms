@@ -15,6 +15,11 @@ function batch_add_terms_menu() {
     'file' => 'batch_add_terms.admin.inc',
   );
 
+  if (module_exists('vppr')) {
+    $items['admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/mass-add']['access callback'] = 'vppr_access_vocabulary_terms';
+    $items['admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/mass-add']['access arguments'] = array(3);
+  }
+
   return $items;
 }
 
