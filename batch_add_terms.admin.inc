@@ -38,6 +38,7 @@ function batch_add_terms_form_submit($form, &$form_state) {
   $terms_names = trim($form_state['values']['terms']);
   $terms_names_array = explode("\n", $terms_names);
   $parent_terms = array();
+  $weight = 0;
 
   foreach ($terms_names_array as $term_name) {
     $term_depth = 0;
@@ -55,6 +56,7 @@ function batch_add_terms_form_submit($form, &$form_state) {
       'vid' => $vocabulary->vid,
       'name' => $term_name,
       'parent' => $term_depth ? $parent_terms[$term_depth - 1] : 0,
+      'weight' => $weight++,
     );
     taxonomy_term_save($term);
 
