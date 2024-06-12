@@ -5,6 +5,10 @@ accepts a list of one term per line. Each line can have one or more dashes
 preceding the term to indicate the term is a child of the previous term in the
 list.
 
+There are options to skip duplicates of existing terms, and to choose the
+language to assign each term in the list if multilingual support is enabled for
+the vocabulary.
+
 ## Installation
 
 * Install this module using the official [Backdrop CMS instructions](https://backdropcms.org/guide/modules).
