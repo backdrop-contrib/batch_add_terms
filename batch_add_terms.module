@@ -8,7 +8,7 @@ function batch_add_terms_menu() {
 
   $items['admin/structure/taxonomy/%taxonomy_vocabulary_machine_name/mass-add'] = array(
     'title' => 'Batch add terms',
-    'page callback' => 'drupal_get_form',
+    'page callback' => 'backdrop_get_form',
     'page arguments' => array('batch_add_terms_form', 3),
     'access arguments' => array('administer taxonomy'),
     'type' => MENU_LOCAL_ACTION,
